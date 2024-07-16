@@ -7,11 +7,10 @@
  @Site:        https://chegva.com
  @Time:        2021/8/13
 """
-
-import random
 import pygame
 from pygame.sprite import Sprite
 import constants
+import secrets
 
 
 class BombSupply(Sprite):
@@ -40,7 +39,7 @@ class BombSupply(Sprite):
 
         # 设置炸弹补给的矩形的初始位置为：窗口的矩形的顶部一个随机的水平位置
         self.rect.bottom = self.window_rect.top
-        self.rect.left = random.randint(0, self.window_rect.width -
+        self.rect.left = secrets.SystemRandom().randint(0, self.window_rect.width -
                                         self.rect.width)
 
     def update(self):

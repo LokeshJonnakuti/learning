@@ -3,8 +3,8 @@ from . import models
 from django.http import HttpResponse
 # 导入用于分页的模块
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-import random
 from django.conf import settings
+import secrets
 
 # Create your views here.
 # 定义一个字段，选中哪些值
@@ -95,7 +95,7 @@ def index(request):
         # 附加到结果集中
         book['author'] = author[0]['authorname']
         # 获得一个Tips
-        tip = TIPS[random.randint(0, len(TIPS)-1)]
+        tip = TIPS[secrets.SystemRandom().randint(0, len(TIPS)-1)]
         # 添加到图书中
         book['tip'] = tip
 

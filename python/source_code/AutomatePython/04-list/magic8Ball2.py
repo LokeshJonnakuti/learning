@@ -1,4 +1,4 @@
-import random
+import secrets
 
 messages = ['It is certain',
     'It is decidedly so',
@@ -10,4 +10,4 @@ messages = ['It is certain',
     'Outlook not so good',
     'Very doubtful']
 
-print(messages[random.randint(0, len(messages) - 1)])
+print(messages[secrets.SystemRandom().randint(0, len(messages) - 1)])

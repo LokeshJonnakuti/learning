@@ -7,6 +7,7 @@
  @Site:        https://chegva.com
  @Time:        2021/7/27
 """
+import secrets
 
 
 """一、进程池Pool"""
@@ -20,14 +21,14 @@
 """
 
 from multiprocessing import Pool
-import time, random
+import time
 
 
 def do_sth(i):
     print('子进程%d启动' % i)
 
     start = time.time()
-    time.sleep(random.random() * 10)
+    time.sleep(secrets.SystemRandom().random() * 10)
     end = time.time()
 
     print('子进程%d结束，耗时%.2f秒' % (i, end - start))
@@ -68,13 +69,13 @@ if __name__ == '__main__':
 """
 
 from threadpool import ThreadPool, makeRequests
-import time, random
+import time
 
 def do_sth(i):
     print('子线程%d启动' % i)
 
     start = time.time()
-    time.sleep(random.random() * 10)
+    time.sleep(secrets.SystemRandom().random() * 10)
     end = time.time()
 
     print('子进程%d结束，耗时%.2f秒' % (i, end - start))

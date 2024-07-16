@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
 
-import random, base64
+import base64
 from hashlib import sha1
+import secrets
 
 def crypt(data, key):
     """RC4 algorithm"""
@@ -25,7 +26,7 @@ def tencode(data, key, encode=base64.b64encode, salt_length=16):
     """RC4 encryption with random salt and final encoding"""
     salt = ''
     for n in range(salt_length):
-        salt += chr(random.randrange(256))
+        salt += chr(secrets.SystemRandom().randrange(256))
     data = salt + crypt(data, sha1(key + salt).digest())
     if encode:
         data = encode(data)

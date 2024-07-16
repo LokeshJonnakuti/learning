@@ -48,9 +48,9 @@ is-a：这是说这个东西是从其他东西合成的，或者说具有一种t
 
 #下面是ex41.py的代码：
 '''
-import random
 from urllib.request import urlopen
 import sys
+import secrets
 
 WORD_URL = "http://learncodethehardway.org/words.txt"
 WORDS = []
@@ -89,14 +89,14 @@ for word in urlopen(WORD_URL).readlines():
 
 
 def convert(snippet, phrase):
-    class_names = [w.capitalize() for w in random.sample(WORDS, snippet.count("%%%"))]
-    other_names = random.sample(WORDS, snippet.count("***"))
+    class_names = [w.capitalize() for w in secrets.SystemRandom().sample(WORDS, snippet.count("%%%"))]
+    other_names = secrets.SystemRandom().sample(WORDS, snippet.count("***"))
     results =[]
     param_names = []
 
     for i in range(0, snippet.count("@@@")):
-        param_count = random.randint(1,3)
-        param_names.append(','.join(random.sample(WORDS, param_count)))
+        param_count = secrets.SystemRandom().randint(1,3)
+        param_names.append(','.join(secrets.SystemRandom().sample(WORDS, param_count)))
 
     for sentence in snippet, phrase:
         result = sentence[:]
@@ -122,7 +122,7 @@ def convert(snippet, phrase):
 try:
     while True:
         snippets = list(PHRASES.keys())
-        random.shuffle(snippets)
+        secrets.SystemRandom().shuffle(snippets)
 
         for snippet in snippets:
             phrase = PHRASES[snippet]

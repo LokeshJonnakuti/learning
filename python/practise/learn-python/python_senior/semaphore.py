@@ -7,6 +7,7 @@
  @Site:        https://chegva.com
  @Time:        2021/7/31
 """
+import secrets
 
 
 """一、多线程同步之Semaphore"""
@@ -58,7 +59,7 @@ bsem.release()
 """
 
 from multiprocessing import Process, Semaphore
-import time, random
+import time
 
 sem = Semaphore(3)
 
@@ -67,7 +68,7 @@ class MyProcess(Process):
         # sem.acquire()
         with sem:
             print('%s获得资源' % self.name)
-            time.sleep(random.random() * 10)
+            time.sleep(secrets.SystemRandom().random() * 10)
         # sem.release()
 
 if __name__ == '__main__':

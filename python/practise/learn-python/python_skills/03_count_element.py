@@ -7,6 +7,7 @@
  @Site:        https://chegva.com
  @Time:        2021/8/22
 """
+import secrets
 
 """统计序列中元素的出现频度"""
 
@@ -18,9 +19,7 @@
    常规方法：使用字典来给元素计数，再根据字典的值进行排序
 """
 
-from random import randint
-
-data = [randint(0, 10) for _ in range(10)]
+data = [secrets.SystemRandom().randint(0, 10) for _ in range(10)]
 print(data) # [10, 3, 9, 1, 4, 5, 9, 10, 5, 3]
 
 d = dict.fromkeys(data, 0)

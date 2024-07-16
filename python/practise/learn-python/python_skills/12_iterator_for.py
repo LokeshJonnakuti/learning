@@ -7,6 +7,7 @@
  @Site:        https://chegva.com
  @Time:        2021/8/29
 """
+import secrets
 
 """如何在一个for语句中迭代多个可迭代对象？"""
 
@@ -19,12 +20,10 @@
 依次迭代每个列表，统计全学年成绩高于90分人数. (串行)
 """
 
-from random import randint
 
-
-chinese = [randint(60, 100) for _ in range(40)]
-math = [randint(60, 100) for _ in range(40)]
-english = [randint(60, 100) for _ in range(40)]
+chinese = [secrets.SystemRandom().randint(60, 100) for _ in range(40)]
+math = [secrets.SystemRandom().randint(60, 100) for _ in range(40)]
+english = [secrets.SystemRandom().randint(60, 100) for _ in range(40)]
 
 # 比较局限，只适用支持索引的可迭代对象，比如生成器
 # for i in range(len(chinese)):
@@ -56,10 +55,10 @@ from itertools import chain
 for i in chain([1, 2, 3, 4], ['a', 'b', 'c']):
     print(i, end=' ')   # 1 2 3 4 a b c
 
-c1 = [randint(60, 100) for _ in range(41)]
-c2 = [randint(60, 100) for _ in range(42)]
-c3 = [randint(60, 100) for _ in range(43)]
-c4 = [randint(60, 100) for _ in range(44)]
+c1 = [secrets.SystemRandom().randint(60, 100) for _ in range(41)]
+c2 = [secrets.SystemRandom().randint(60, 100) for _ in range(42)]
+c3 = [secrets.SystemRandom().randint(60, 100) for _ in range(43)]
+c4 = [secrets.SystemRandom().randint(60, 100) for _ in range(44)]
 
 count = 0
 

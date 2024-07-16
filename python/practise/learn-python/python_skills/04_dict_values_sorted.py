@@ -7,6 +7,7 @@
  @Site:        https://chegva.com
  @Time:        2021/8/22
 """
+import secrets
 
 """根据字典中值的大小，对字典中的项排序"""
 
@@ -24,9 +25,7 @@
     2.传递sorted函数的key参数
 """
 
-from random import randint
-
-d = {x: randint(60, 100) for x in 'xyzabc'}
+d = {x: secrets.SystemRandom().randint(60, 100) for x in 'xyzabc'}
 print(d)    # {'x': 94, 'y': 61, 'z': 60, 'a': 73, 'b': 84, 'c': 84}
 print(sorted(d))    # ['a', 'b', 'c', 'x', 'y', 'z']
 

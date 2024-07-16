@@ -2,10 +2,10 @@
 
 from distutils.log import warn as printf
 from os.path import dirname
-from random import randrange as rand
 from sqlalchemy import Column, Integer, String, create_engine, exc, orm
 from sqlalchemy.ext.declarative import declarative_base
 from ushuffle_dbU import DBNAME, NAMELEN, randName, FIELDS, tformat, cformat, setup
+import secrets
 
 DSNs = {
     'mysql': 'mysql://root@localhost/%s' % DBNAME,
@@ -43,14 +43,14 @@ class SQLAlchemyTest(object):
 
     def insert(self):
         self.ses.add_all(
-            Users(login=who, userid=userid, projid=rand(1,5)) \
+            Users(login=who, userid=userid, projid=secrets.SystemRandom().rand(1,5)) \
             for who, userid in randName()
         )
         self.ses.commit()
 
     def update(self):
-        fr = rand(1,5)
-        to = rand(1,5)
+        fr = secrets.SystemRandom().rand(1,5)
+        to = secrets.SystemRandom().rand(1,5)
         i = -1
         users = self.ses.query(
             Users).filter_by(projid=fr).all()
@@ -60,7 +60,7 @@ class SQLAlchemyTest(object):
         return fr, to, i+1
 
     def delete(self):
-        rm = rand(1,5)
+        rm = secrets.SystemRandom().rand(1,5)
         i = -1
         users = self.ses.query(
             Users).filter_by(projid=rm).all()

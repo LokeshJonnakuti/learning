@@ -1,5 +1,5 @@
 #coding:utf-8
-import random
+import secrets
 
 
 
@@ -24,5 +24,5 @@ class RandomProxy(object):
         :param spider:
         :return:
         '''
-        proxy = random.choice(self.iplist)
+        proxy = secrets.choice(self.iplist)
         request.meta['proxy'] =proxy

@@ -1,15 +1,15 @@
 from django.shortcuts import render
-import random
 from django.http import HttpResponse, JsonResponse
 import json
 from django.shortcuts import redirect, reverse
+import secrets
 
 
 # Create your views here.
 
 def login(request):
     if request.method == 'GET':
-        captcha = str(random.randint(1000, 9999))
+        captcha = str(secrets.SystemRandom().randint(1000, 9999))
         print(captcha)
         response = render(request, 'mysession/mysession.html')
         # response.set_cookie('captcha', captcha)

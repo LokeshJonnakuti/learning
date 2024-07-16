@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
 from distutils.log import warn as printf
-from random import randrange as rand
 from pymongo import Connection, errors
 from ushuffle_dbU import DBNAME, randName, FIELDS, tformat, cformat
+import secrets
 
 COLLECTION = 'users'
 
@@ -18,12 +18,12 @@ class MongoTest(object):
 
     def insert(self):
         self.users.insert(
-            dict(login=who, userid=uid, projid=rand(1,5)) \
+            dict(login=who, userid=uid, projid=secrets.SystemRandom().rand(1,5)) \
             for who, uid in randName())
 
     def update(self):
-        fr = rand(1,5)
-        to = rand(1,5)
+        fr = secrets.SystemRandom().rand(1,5)
+        to = secrets.SystemRandom().rand(1,5)
         i = -1
         for i, user in enumerate(self.users.find({'projid': fr})):
             self.users.update(user,
@@ -31,7 +31,7 @@ class MongoTest(object):
         return fr, to, i+1
 
     def delete(self):
-        rm = rand(1,5)
+        rm = secrets.SystemRandom().rand(1,5)
         i = -1
         for i, user in enumerate(self.users.find({'projid': rm})):
             self.users.remove(user)

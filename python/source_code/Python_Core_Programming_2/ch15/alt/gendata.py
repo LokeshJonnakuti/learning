@@ -6,11 +6,11 @@
 # created on 00/05/19 by wesc
 #
 
-from random import randint, choice
 from time import ctime
 from sys import maxint                        # (value, not function)
 from string import lowercase
 from os.path import exists
+import secrets
 
 doms = ( 'com', 'edu', 'net', 'org', 'gov' )
 
@@ -29,26 +29,26 @@ def main():
     f = open(fn, 'w')
 
     # write test data and close file
-    for i in range(randint(5, 10)):
+    for i in range(secrets.SystemRandom().randint(5, 10)):
 
         # randomly choose a date integer and
         # calculate the corresponding date string
-        dtint = randint(0, maxint-1)
+        dtint = secrets.SystemRandom().randint(0, maxint-1)
         dtstr = ctime(dtint)
 
         # the login should be between 4 and 7 chars in length;
         # the domain should be 
-        loginlen = randint(4, 7)
+        loginlen = secrets.SystemRandom().randint(4, 7)
         login = ''
         for j in range(loginlen):
-            login = login + choice(lowercase)
+            login = login + secrets.choice(lowercase)
 
-        domainlen = randint(loginlen, 12)
+        domainlen = secrets.SystemRandom().randint(loginlen, 12)
         dom = ''
         for j in range(domainlen):
-            dom = dom + choice(lowercase)
+            dom = dom + secrets.choice(lowercase)
         f.write('%s:%s@%s.%s:%d-%d-%d\n' % (dtstr, login,
-            dom, choice(doms), dtint, loginlen, domainlen))
+            dom, secrets.choice(doms), dtint, loginlen, domainlen))
 
     # close test file
     f.close()

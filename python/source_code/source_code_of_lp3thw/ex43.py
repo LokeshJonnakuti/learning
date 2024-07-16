@@ -67,8 +67,8 @@ wrap
 #20180320凌晨12：39已经阅读到了p201,准备睡觉了。
 # base class ,Subclass:
 from sys import exit
-from random import randint
 from textwrap import dedent
+import secrets
 
 
 class Scene(object):
@@ -109,7 +109,7 @@ class Death(Scene):
         "You're worse than your Dad's jokes."
             ]
     def enter(self):
-        print(Death.quips[randint(0,len(self.quips)-1)])
+        print(Death.quips[secrets.SystemRandom().randint(0,len(self.quips)-1)])
         exit(1)
 
 
@@ -164,7 +164,7 @@ class LaserWeaponArmory(Scene):
                 如果你错了10次，那么锁就会永远关闭，你就得不到炸弹了。代码是3位数。
               """))
 
-        code = f"{randint(1,9)}{randint(1,9)}{randint(1,9)}"
+        code = f"{secrets.SystemRandom().randint(1,9)}{secrets.SystemRandom().randint(1,9)}{secrets.SystemRandom().randint(1,9)}"
         print(code)
         guess = input("[keypad]> ")
         guessed = 0#原来这里写的 guesses 我判断不对，应该是guessed,另外这里初始化是1才是测试10次。
@@ -230,7 +230,7 @@ class EscapePod(Scene):
                 有些可能会损坏，但你没有时间去看。有5个吊舱，你要哪个?
               """ ))
 
-        good_pod = randint(1,5)
+        good_pod = secrets.SystemRandom().randint(1,5)
         print(good_pod)# 这一行是我新加的。
         guess = input("[pod #]> ")
 

@@ -7,6 +7,7 @@
  @Site:        https://chegva.com
  @Time:        2021/8/22
 """
+import secrets
 
 """如何让字典保持有序？"""
 
@@ -26,7 +27,6 @@
 """
 
 from time import time
-from random import randint
 from collections import OrderedDict
 
 # 选手成绩字典
@@ -43,7 +43,7 @@ for i in range(8):
     # 通过输入阻塞，输入回车表示答题完毕，记录下时间
     input()
     # 模拟某个选手答题完毕，从选手列表中删除
-    p = players.pop(randint(0, 7 - i ))
+    p = players.pop(secrets.SystemRandom().randint(0, 7 - i ))
     # 记录答题结束时间
     end = time()
     # 打印选手排名和成绩

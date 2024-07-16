@@ -3,7 +3,7 @@ from . import models
 from django.http import HttpResponse
 from django.db.models import Count, Max, Min, Sum, Avg
 from django.db.models import F, Q
-import random
+import secrets
 
 # Create your views here.
 
@@ -33,7 +33,7 @@ def index(request):
         # 准备图图片路径
         book['img'] = "../static/img/icon/" + str(book['bookid']) + ".jpg"
         # 准备Tip
-        book['tip'] = Tips[random.randint(0, len(Tips)-1)]
+        book['tip'] = Tips[secrets.SystemRandom().randint(0, len(Tips)-1)]
         # 准备作者
         author = models.Author.objects.filter(book__bookid=book['bookid']).values()
         print("获取的作者：", author)

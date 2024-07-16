@@ -7,6 +7,7 @@
  @Site:        https://chegva.com
  @Time:        2021/8/22
 """
+import secrets
 
 """快速找到多个字典中的公共键(key)"""
 
@@ -23,14 +24,12 @@
 常规方法：使用多次迭代
 """
 
-from random import randint, sample
-
 # 使用字典解析和sample构建三轮联赛，abcdefg七个球员中的进球数
-s1 = {x: randint(1, 4) for x in sample('abcdefg', randint(3, 6))}
+s1 = {x: secrets.SystemRandom().randint(1, 4) for x in secrets.SystemRandom().sample('abcdefg', secrets.SystemRandom().randint(3, 6))}
 print(s1)
-s2 = {x: randint(1, 4) for x in sample('abcdefg', randint(3, 6))}
+s2 = {x: secrets.SystemRandom().randint(1, 4) for x in secrets.SystemRandom().sample('abcdefg', secrets.SystemRandom().randint(3, 6))}
 print(s2)
-s3 = {x: randint(1, 4) for x in sample('abcdefg', randint(3, 6))}
+s3 = {x: secrets.SystemRandom().randint(1, 4) for x in secrets.SystemRandom().sample('abcdefg', secrets.SystemRandom().randint(3, 6))}
 print(s3)
 
 # 使用多次迭代找出公共键，执行效率不高

@@ -1,3 +1,4 @@
-import random
+import secrets
+
 for i in range(5):
-    print(random.randint(1, 10))
+    print(secrets.SystemRandom().randint(1, 10))

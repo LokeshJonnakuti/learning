@@ -7,6 +7,7 @@
  @Site:        https://chegva.com
  @Time:        2021/7/28
 """
+import secrets
 
 
 """一、进程池ProcessPoolExecutor"""
@@ -115,10 +116,10 @@ if __name__ == '__main__':
 
 from concurrent.futures import ProcessPoolExecutor, wait, as_completed, \
     ALL_COMPLETED, FIRST_COMPLETED
-import time, random
+import time
 
 def do_sth(i):
-    time.sleep(random.random() * 10)
+    time.sleep(secrets.SystemRandom().random() * 10)
     return i * i
 
 if __name__ == '__main__':
@@ -158,13 +159,13 @@ if __name__ == '__main__':
 """
 
 from concurrent.futures import ThreadPoolExecutor
-import time, random
+import time
 
 def do_sth2(i):
     print('子线程%d启动' % i)
 
     start = time.time()
-    time.sleep(random.random() * 10)
+    time.sleep(secrets.SystemRandom().random() * 10)
     end = time.time()
 
     print('子线程%d结束，耗时%.2f秒' % (i, end - start))

@@ -2,7 +2,7 @@
 
 from distutils.log import warn as printf
 import os
-from random import randrange as rand
+import secrets
 
 if isinstance(__builtins__, dict) and 'raw_input' in __builtins__:
     scanf = raw_input
@@ -129,26 +129,26 @@ def randName():
 def insert(cur, db):
     if db == 'sqlite':
         cur.executemany("INSERT INTO users VALUES(?, ?, ?)",
-        [(who, uid, rand(1,5)) for who, uid in randName()])
+        [(who, uid, secrets.SystemRandom().rand(1,5)) for who, uid in randName()])
     elif db == 'gadfly':
         for who, uid in randName():
             cur.execute("INSERT INTO users VALUES(?, ?, ?)",
-            (who, uid, rand(1,5)))
+            (who, uid, secrets.SystemRandom().rand(1,5)))
     elif db == 'mysql':
         cur.executemany("INSERT INTO users VALUES(%s, %s, %s)",
-        [(who, uid, rand(1,5)) for who, uid in randName()])
+        [(who, uid, secrets.SystemRandom().rand(1,5)) for who, uid in randName()])
 
 getRC = lambda cur: cur.rowcount if hasattr(cur, 'rowcount') else -1
 
 def update(cur):
-    fr = rand(1,5)
-    to = rand(1,5)
+    fr = secrets.SystemRandom().rand(1,5)
+    to = secrets.SystemRandom().rand(1,5)
     cur.execute(
         "UPDATE users SET projid=%d WHERE projid=%d" % (to, fr))
     return fr, to, getRC(cur)
 
 def delete(cur):
-    rm = rand(1,5)
+    rm = secrets.SystemRandom().rand(1,5)
     cur.execute('DELETE FROM users WHERE projid=%d' % rm)
     return rm, getRC(cur)
 

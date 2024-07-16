@@ -1,4 +1,3 @@
-import random
 import os
 import re, hashlib
 from datetime import datetime
@@ -7,6 +6,7 @@ from django.views.generic import View
 from django.http import HttpResponse
 from django.conf import settings
 from .models import User
+import secrets
 
 '''
 自己的模块
@@ -170,7 +170,7 @@ def login(request):
     # }
 
     if request.method == 'GET':
-        captcha = str(random.randint(1000, 9999))
+        captcha = str(secrets.SystemRandom().randint(1000, 9999))
         request.session['captcha'] = captcha
         print(captcha)
         return render(request, 'login.html')

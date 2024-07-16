@@ -1,4 +1,4 @@
-import random
+import secrets
 
 def getAnswer(answerNumber):
     if answerNumber == 1:
@@ -20,6 +20,6 @@ def getAnswer(answerNumber):
     elif answerNumber == 9:
         return 'Very doubtful'
 
-r = random.randint(1, 9)
+r = secrets.SystemRandom().randint(1, 9)
 fortune = getAnswer(r)
 print(fortune)

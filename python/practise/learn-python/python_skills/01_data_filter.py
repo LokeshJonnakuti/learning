@@ -7,6 +7,7 @@
  @Site:        https://chegva.com
  @Time:        2021/8/20
 """
+import secrets
 
 """一、过滤掉列表中的负数"""
 
@@ -27,10 +28,8 @@ print(res)  # [1, 6, 5, 0, 9, 8, 7, 4]
 2、使用filter函数，效率提升很大
 """
 
-from random import randint
-
 # 使用列表解析随机生成值在-10到10之间的10个元素
-data = [randint(-10, 10) for _ in range(10)]
+data = [secrets.SystemRandom().randint(-10, 10) for _ in range(10)]
 print(data)     # [4, -6, 7, 8, -3, -4, 6, 0, 6, -10]
 
 # 使用filter过滤
@@ -57,7 +56,7 @@ In [15]: timeit [x for x in data if x >= 0]
 """二、筛出字典中值高于90的项"""
 
 # 随机生成20个字典元素，且值在60到100间
-score = {x: randint(60, 100) for x in range(1, 21)}
+score = {x: secrets.SystemRandom().randint(60, 100) for x in range(1, 21)}
 
 # 使用字典解析
 print({k: v for k, v in score.items() if v > 90})   # {2: 99, 4: 91, 9: 96}

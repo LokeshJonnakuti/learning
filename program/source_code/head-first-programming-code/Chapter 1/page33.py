@@ -1,5 +1,6 @@
-from random import randint 
-secret = randint(1, 10) 
+import secrets
+
+secret = secrets.SystemRandom().randint(1, 10) 
 print("Welcome!") 
 guess = 0 
 while guess != secret: 

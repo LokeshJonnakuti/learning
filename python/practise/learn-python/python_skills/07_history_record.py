@@ -7,6 +7,7 @@
  @Site:        https://chegva.com
  @Time:        2021/8/26
 """
+import secrets
 
 
 """如何实现用户的历史记录功能(最多n条)"""
@@ -30,12 +31,10 @@
     1.使用标准库collections中的deque，它是一个双端循环队列
     2.程序退出前，可以使用pickle将队列对象存入文件，再次运行程序时将其导入
 """
-
-from random import randint
 from collections import deque
 import pickle
 
-N = randint(0, 100)
+N = secrets.SystemRandom().randint(0, 100)
 
 # 最多记录最近5次输入
 history = deque([], 5)

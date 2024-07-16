@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-from random import randrange
 from time import sleep
 from queue import Queue
 from myThread3 import MyThread
+import secrets
 
 def writeQ(queue):
     print('producing object for Q...', end='')
@@ -17,18 +17,18 @@ def readQ(queue):
 def writer(queue, loops):
     for i in range(loops):
         writeQ(queue)
-        sleep(randrange(1, 4))
+        sleep(secrets.SystemRandom().randrange(1, 4))
 
 def reader(queue, loops):
     for i in range(loops):
         readQ(queue)
-        sleep(randrange(2, 6))
+        sleep(secrets.SystemRandom().randrange(2, 6))
 
 funcs = [writer, reader]
 nfuncs = range(len(funcs))
 
 def main():
-    nloops = randrange(2, 6)
+    nloops = secrets.SystemRandom().randrange(2, 6)
     q = Queue(32)
 
     threads = []

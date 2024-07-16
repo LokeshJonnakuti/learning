@@ -7,6 +7,7 @@
  @Site:        https://chegva.com
  @Time:        2021/7/31
 """
+import secrets
 
 
 """一、管道的概述"""
@@ -64,7 +65,7 @@ print(c1.recv())    # c2发送的数据
 
 
 from multiprocessing import Process, Pipe
-import os, time, random
+import os, time
 
 # 发送数据的子进程执行的代码
 def send_data(conn):
@@ -73,7 +74,7 @@ def send_data(conn):
     for obj in list(range(1, 10)):
         print('发送数据：%s' % obj)
         conn.send(obj)
-        time.sleep(random.random() * 3)
+        time.sleep(secrets.SystemRandom().random() * 3)
 
     print('发送数据：None')
     conn.send(None)
@@ -90,7 +91,7 @@ def recv_data(conn):
             print('接收数据：None')
             break
         print('接收数据：%s' % item)
-        time.sleep(random.random() * 3)
+        time.sleep(secrets.SystemRandom().random() * 3)
 
     print('接收数据的子进程%d结束' % os.getpid())
 

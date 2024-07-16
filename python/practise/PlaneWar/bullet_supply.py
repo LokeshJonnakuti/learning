@@ -7,11 +7,10 @@
  @Site:        https://chegva.com
  @Time:        2021/8/9
 """
-
-import random
 import pygame
 from pygame.sprite import Sprite
 import constants
+import secrets
 
 
 class BulletSupply(Sprite):
@@ -40,7 +39,7 @@ class BulletSupply(Sprite):
 
         # 设置子弹补给的矩形的初始位置为：窗口的矩形的顶部一个随机的水平位置
         self.rect.bottom = self.window_rect.top
-        self.rect.left = random.randint(0, self.window_rect.width -
+        self.rect.left = secrets.SystemRandom().randint(0, self.window_rect.width -
                                         self.rect.width)
 
         # 子弹补给每次移动时的偏移量

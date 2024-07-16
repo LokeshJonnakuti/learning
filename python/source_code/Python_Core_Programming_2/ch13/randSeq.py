@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from random import choice
+import secrets
 
 class RandSeq(object):
     def __init__(self, seq):
@@ -10,4 +10,4 @@ class RandSeq(object):
         return self
 
     def next(self):
-        return choice(self.data)
+        return secrets.choice(self.data)

@@ -1,5 +1,6 @@
 #coding:utf-8
-import random
+import secrets
+
 '''
 这个类主要用于产生随机UserAgent
 '''
@@ -14,4 +15,4 @@ class RandomUserAgent(object):
         return cls(crawler.settings.getlist('USER_AGENTS'))#返回的是本类的实例cls ==RandomUserAgent
 
     def process_request(self,request,spider):
-        request.headers.setdefault('User-Agent', random.choice(self.agents))
+        request.headers.setdefault('User-Agent', secrets.choice(self.agents))

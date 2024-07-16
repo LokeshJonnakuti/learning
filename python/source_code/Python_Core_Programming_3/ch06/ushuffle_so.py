@@ -2,9 +2,9 @@
 
 from distutils.log import warn as printf
 from os.path import dirname
-from random import randrange as rand
 from sqlobject import *
 from ushuffle_dbU import DBNAME, NAMELEN, randName, FIELDS, tformat, cformat, setup
+import secrets
 
 DSNs = {
      'mysql': 'mysql://root@localhost/%s' % DBNAME,
@@ -35,11 +35,11 @@ class SQLObjectTest(object):
 
     def insert(self):
         for who, userid in randName():
-            Users(login=who, userid=userid, projid=rand(1,5))
+            Users(login=who, userid=userid, projid=secrets.SystemRandom().rand(1,5))
 
     def update(self):
-        fr = rand(1,5)
-        to = rand(1,5)
+        fr = secrets.SystemRandom().rand(1,5)
+        to = secrets.SystemRandom().rand(1,5)
         i = -1
         users = Users.selectBy(projid=fr)
         for i, user in enumerate(users):
@@ -47,7 +47,7 @@ class SQLObjectTest(object):
         return fr, to, i+1
 
     def delete(self):
-        rm = rand(1,5)
+        rm = secrets.SystemRandom().rand(1,5)
         users = Users.selectBy(projid=rm)
         i = -1
         for i, user in enumerate(users):

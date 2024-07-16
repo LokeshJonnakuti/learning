@@ -4,8 +4,9 @@ from . import settings as USettings
 import os
 import json
 from django.views.decorators.csrf import csrf_exempt
-import datetime,random
+import datetime
 import urllib
+import secrets
 
 def get_path_format_vars():
     return {
@@ -14,7 +15,7 @@ def get_path_format_vars():
         "day":datetime.datetime.now().strftime("%d"),
         "time":datetime.datetime.now().strftime("%H%M%S"),
         "datetime":datetime.datetime.now().strftime("%Y%m%d%H%M%S"),
-        "rnd":random.randrange(100,999)
+        "rnd":secrets.SystemRandom().randrange(100,999)
     }
 
 #保存上传的文件
