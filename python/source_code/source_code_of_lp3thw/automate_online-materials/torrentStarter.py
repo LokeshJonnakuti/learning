@@ -3,6 +3,8 @@
 # So far, this program checks for BitTorrent "magnet" links and launches the torrent program for them.
 
 import smtplib, imapclient, pyzmail, logging, traceback, time, subprocess
+from security import safe_command
+
 logging.basicConfig(filename='torrentStarterLog.txt', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Configure the program by setting some variables.
@@ -59,7 +61,7 @@ def parseInstructionEmail(instruction):
     lines = instruction.split('\n')
     for line in lines:
         if line.startswith('magnet:?'):
-            subprocess.Popen(TORRENT_PROGRAM + ' ' + line) # launch the bittorrent program
+            safe_command.run(subprocess.Popen, TORRENT_PROGRAM + ' ' + line) # launch the bittorrent program
             responseBody += 'Downloading magnet link.\n'
 
     # Email the response body to confirm the bot carried out this instruction.

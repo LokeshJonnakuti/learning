@@ -1,4 +1,6 @@
 from subprocess import run
+from security import safe_command
+
 # 拆分文件的路径
 input_video = "/Users/edz/Desktop/05/xxx.mp4"
 
@@ -14,7 +16,7 @@ output_video = "/Users/edz/Desktop/05/video-%04d.ts"
 cmd1 = ["ffmpeg", "-i", input_video, "-f", "segment", "-segment_time", str(segment_time), "-segment_format",
     "mpegts", "-segment_list", m3u8_list, "-c", "copy", "-bsf:v", "h264_mp4toannexb", "-map", "0", output_video]
 
-run(cmd1)
+safe_command.run(run, cmd1)
 
 # 合并
 # ffmpeg -allowed_extensions ALL -protocol_whitelist "file,http,crypto,tcp,https" -i index.m3u8 -c copy out.mp4
