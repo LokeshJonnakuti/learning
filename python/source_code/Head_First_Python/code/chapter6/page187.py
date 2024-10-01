@@ -12,7 +12,7 @@ def sanitize(time_string):
 def get_coach_data(filename):
     try:
         with open(filename) as f:
-            data = f.readline()
+            data = f.readline(5_000_000)
         templ = data.strip().split(',')
         return({'Name' : templ.pop(0),
                 'DOB'  : templ.pop(0),

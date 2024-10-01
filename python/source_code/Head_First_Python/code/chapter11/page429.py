@@ -19,7 +19,7 @@ quit_msg = "Quitting the Marathon Club's App."
 row_data = {}
 
 with open('/sdcard/sl4a/scripts/PaceData.csv') as paces:
-    column_headings = paces.readline().strip().split(',')
+    column_headings = paces.readline(5_000_000).strip().split(',')
     column_headings.pop(0)
     for each_line in paces:
         row = each_line.strip().split(',')
