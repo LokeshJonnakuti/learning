@@ -12,7 +12,7 @@ row_data = {}
 
 with open('PaceData.csv') as paces:
 
-    column_headings = paces.readline().strip().split(',')
+    column_headings = paces.readline(5_000_000).strip().split(',')
     column_headings.pop(0)
 
     for each_line in paces:

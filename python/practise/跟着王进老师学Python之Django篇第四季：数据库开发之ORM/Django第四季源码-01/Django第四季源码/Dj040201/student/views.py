@@ -26,7 +26,7 @@ def read_student_from_file(path:str):
     # 读取
     try:
         with open(path, mode='r', encoding='utf-8-sig') as fd:
-            current_line = fd.readline()
+            current_line = fd.readline(5_000_000)
             while current_line:
                 # 切分属性信息
                 student = current_line.strip().replace("\n","").split(",")
@@ -42,7 +42,7 @@ def read_student_from_file(path:str):
                 else:
                     female_number += 1
                 # 读取下一行
-                current_line = fd.readline()
+                current_line = fd.readline(5_000_000)
 
             # 返回
             # return students
