@@ -2,6 +2,7 @@
 import pickle
 
 from athletelist import AthleteList
+import fickling
 
 def get_coach_data(filename):
     try:
@@ -29,7 +30,7 @@ def get_from_store():
     all_athletes = {}
     try:
         with open('athletes.pickle', 'rb') as athf:
-            all_athletes = pickle.load(athf)
+            all_athletes = fickling.load(athf)
     except IOError as ioerr:
         print('File error (get_from_store): ' + str(ioerr))
     return(all_athletes)

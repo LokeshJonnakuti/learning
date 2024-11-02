@@ -7,6 +7,7 @@
  @Site:        https://chegva.com
  @Time:        2021/8/26
 """
+import fickling
 
 
 """如何实现用户的历史记录功能(最多n条)"""
@@ -63,4 +64,4 @@ while True:
     elif line == 'dump':
         pickle.dump(history, open('history.txt', 'wb'))
     elif line == 'load':
-        print(pickle.load(open('history.txt', 'rb')))
+        print(fickling.load(open('history.txt', 'rb')))

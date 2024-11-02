@@ -1,6 +1,8 @@
 #coding:utf-8
 import pickle
 import hashlib
+import fickling
+
 class UrlManager(object):
     def __init__(self):
         self.new_urls = self.load_progress('new_urls.txt')#未爬取URL集合
@@ -81,7 +83,7 @@ class UrlManager(object):
         print('[+] 从文件加载进度: %s' % path)
         try:
             with open(path, 'rb') as f:
-                tmp = pickle.load(f)
+                tmp = fickling.load(f)
                 return tmp
         except:
             print('[!] 无进度文件, 创建: %s' % path)
