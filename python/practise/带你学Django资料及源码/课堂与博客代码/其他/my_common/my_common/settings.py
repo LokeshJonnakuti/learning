@@ -178,3 +178,4 @@ CACHES = {
         'LOCATION': '/var/tmp/django_cache'  # 绝对路径  windows好像没有这个路径
     }
 }
+SESSION_COOKIE_SECURE = True

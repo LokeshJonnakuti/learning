@@ -136,3 +136,4 @@ STATICFILES_DIRS = [
 
 # ========= 设置X-Frame-Option选项======
 X_FRAME_OPTIONS = "SAMEORIGIN"
+SESSION_COOKIE_SECURE = True

@@ -166,3 +166,4 @@ JWT_AUTH = {
     'JWT_ALLOW_REFRESH': False,
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'app05.utils.jwt_response_payload_handler',
 }
+SESSION_COOKIE_SECURE = True
