@@ -194,3 +194,4 @@ AUTHED_WHITE_URL = [
 # ============= 注册存储当前用户权限的key 和 菜单的key  ================
 PERMISSION_SESSION_KEY = 'permission_list'
 MENU_SESSION_KEY = 'menu_dict'
+SESSION_COOKIE_SECURE = True

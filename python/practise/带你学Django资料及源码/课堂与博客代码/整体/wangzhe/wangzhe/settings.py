@@ -124,3 +124,4 @@ USE_TZ = True
 
 # 静态
 STATIC_URL = '/static/'
+SESSION_COOKIE_SECURE = True

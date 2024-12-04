@@ -128,3 +128,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace("\\", "/")
 MEDIA_URL = '/media/'
 
 ALLOW_UPLOAD = ['jpg', 'jpeg', 'png']
+SESSION_COOKIE_SECURE = True

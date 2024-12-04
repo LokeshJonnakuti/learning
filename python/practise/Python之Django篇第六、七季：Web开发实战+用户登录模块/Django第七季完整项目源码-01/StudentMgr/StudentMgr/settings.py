@@ -183,3 +183,4 @@ WHITE_URL_LIST = [
     '/user/reset/pass/check_code/',
     '/user/reset/pass/commit/',
 ]
+SESSION_COOKIE_SECURE = True
